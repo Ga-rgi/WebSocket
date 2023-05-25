@@ -19,6 +19,8 @@ func main() {
 		log.Printf("failed to start server: %v", err)
 		panic(err)
 	}
+
+	go PrintEveryMinute()
 }
 
 func WebSocketConnect(c *gin.Context) {
