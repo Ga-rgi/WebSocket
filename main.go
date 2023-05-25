@@ -12,15 +12,13 @@ var upgrader = websocket.Upgrader{
 }
 
 func main() {
+	go PrintEveryMinute()
 	router := gin.Default()
 	router.GET("/ws", WebSocketConnect)
-
 	if err := router.Run(":8080"); err != nil {
 		log.Printf("failed to start server: %v", err)
 		panic(err)
 	}
-
-	go PrintEveryMinute()
 }
 
 func WebSocketConnect(c *gin.Context) {
